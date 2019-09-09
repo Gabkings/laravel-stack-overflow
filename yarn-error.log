@@ -1,0 +1,54 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add vue-template-compiler --dev --production=false
+
+PATH: 
+  /usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/opt/lampp/htdocs/stackoverflow/node_modules/.bin:/usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/opt/lampp/htdocs/stackoverflow/node_modules/.bin:/home/dev/bin:/home/dev/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/lamp/bin/php:/snap/bin:/home/dev/.dotnet/tools
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  11.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.npmjs.org registry.npmjs.org:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:58:26)
+
+npm manifest: 
+  {
+      "private": true,
+      "scripts": {
+          "dev": "npm run development",
+          "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "watch": "npm run development -- --watch",
+          "watch-poll": "npm run watch -- --watch-poll",
+          "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+          "prod": "npm run production",
+          "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+      },
+      "devDependencies": {
+          "axios": "^0.18",
+          "bootstrap": "^4.1.0",
+          "cross-env": "^5.1",
+          "jquery": "^3.2",
+          "laravel-mix": "^4.0.7",
+          "lodash": "^4.17.5",
+          "popper.js": "^1.12",
+          "resolve-url-loader": "^2.3.1",
+          "sass": "^1.15.2",
+          "sass-loader": "^7.1.0",
+          "vue": "^2.5.17"
+      },
+      "dependencies": {
+          "vue-router": "^3.1.2"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,0 +1,40 @@
+
+$color-green: green;
+
+.counters{
+    margin-right: 30px;
+    text-align: center;
+    font-size: medium; 
+}
+
+.counters > div.votes{
+    width: 60px;
+    height: 60px;
+}
+
+.counters strong{
+    font-size: 2em;
+    display: block;
+}
+
+.counters > div.answers{
+    width: 60px;
+    height: 60px;
+}
+
+.answered{
+    border: 1px solid green;
+    color: green;
+}
+.accepted{
+    background: green;
+    color: white;
+}
+
+.unanswered{
+    border: none;
+}
+.views{
+    margin-top: 30px;
+}
+
