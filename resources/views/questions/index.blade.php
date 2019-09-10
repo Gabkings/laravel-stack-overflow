@@ -31,12 +31,16 @@
                             <div class="d-flex align-items-center">
                                     <h3><a href="{{ $question->url }}"> {{  $question->title }}</a></h3>
                                     <div class="ml-auto">
+                                    @if(Auth::user()->can('update-question', $question))
                                         <button class="btn btn-sm btn-outline-info"><a href="{{ route('questions.edit', $question->id) }}">Edit Question</a></button>
+                                        @endif
+                                        @if(Auth::user()->can('delete-question', $question))
                                         <form class="form-delete" method="post" action="{{ route('questions.destroy', $question->id)}}">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure')">DELETE</button>
                                         </form>
+                                        @endif
                                     </div>
                             </div>
                            
