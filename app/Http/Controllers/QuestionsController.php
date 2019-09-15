@@ -9,6 +9,9 @@ use App\Http\Requests\AskQuestionRequest;
 
 class QuestionsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -64,10 +67,10 @@ class QuestionsController extends Controller
      */
     public function edit(Questions $question)
     {
-        if(\Gate::denies('update-question', $question)){
-            return abort(403, 'Access dinied');
-        }
-
+        // if(\Gate::denies('update-question', $question)){
+        //     return abort(403, 'Access dinied');
+        // }
+        $this->authorize('update', $question);
         return view('questions.edit', compact('question'));
 
         
@@ -98,9 +101,10 @@ class QuestionsController extends Controller
      */
     public function destroy(Questions $question)
     {
-        if(\Gate::denies('delete-question', $question)){
-            return abort(403, 'Access dinied');
-        }
+        // if(\Gate::denies('delete-question', $question)){
+        //     return abort(403, 'Access dinied');
+        // }
+        $this->authorize('delete', $question);
         $question->delete();
             return redirect('/questions')->with('success', 'Your questions has been deleted'); 
     }
