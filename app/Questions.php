@@ -38,4 +38,8 @@ class Questions extends Model
     public function getBodyHtmlAttribute(){
         return \Parsedown::instance()->text($this->body);
     }
+
+    public function answers(){
+        return $this->hasMany(Answers::class);
+    }
 }
