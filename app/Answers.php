@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Answers extends Model
 {
     //
-    protected $fillables = ['user_id','question_id', 'answer', 'vote_count'];
+    protected $fillables = ['user_id','body'];
 
-    public function question(){
+    public function questions(){
         return $this->belongsTo(Questions::class);
     }
 
@@ -21,11 +21,20 @@ class Answers extends Model
         return \Parsedown::instance()->text($this->body);
     }
 
-    public static function boot(){
+    public static function boot()
+    {
         parent::boot();
-        static::created(function($answer){
-            $answer->question->increment('answers_count');
-            $answer->question->save();
-        })
+
+        static::created(function ($answer) {
+            $answer->questions->increment('answers_count');                     
+        });        
+
+        static::deleted(function ($answer) {            
+            $answer->questions->decrement('answers_count');            
+        });
+    }
+
+    public function getCreatedDateAttribute(){
+        return $this->created_at->diffForHumans();
     }
 }
