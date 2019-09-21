@@ -3,29 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Answers;
+use App\Questions;
 use Illuminate\Http\Request;
+
 
 class AnswersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,21 +16,14 @@ class AnswersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Questions $questions,Request $request)
     {
-        //
+        $questions->answers()->create($request->validate([
+                'body' => 'required'
+            ]) + ['user_id' => \Auth::id()]);
+        return back()->with("success", "Your answer has been posted successfully");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Answers  $answers
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Answers $answers)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
